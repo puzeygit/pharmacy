@@ -10,9 +10,9 @@ apiRouter.route('/new')
     // const user = await User.create({ name: name})
     res.sendStatus(200)
   })
-
-// apiRouter.get('/', (req, res) => {
-
-// })
+apiRouter.route('/edit')
+  .patch(async (req, res) => {
+    await User.update(req.body, { where: {id: req}})
+  })
 
 export default apiRouter;
