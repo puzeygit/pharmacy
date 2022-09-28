@@ -1,6 +1,9 @@
 import React from 'react';
 
 const Registration = () => {
+  
+  
+
 
   return (
     <form className='mb-3 mt-3'>
