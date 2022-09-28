@@ -4,6 +4,7 @@ import path from 'path';
 import apiRouter from './routes/apiRouter';
 import indexRouter from './routes/indexRouter';
 import customRender from './utils/customRender';
+import pageRouter from './routes/pageRouters'
 import { localsMiddle } from './middlewares';
 
 const session = require('express-session');
@@ -34,6 +35,9 @@ app.use(localsMiddle);
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
+app.use('/page',pageRouter)
+
+
 
 app.listen(PORT, () => {
   console.log('server start on port ', PORT);
