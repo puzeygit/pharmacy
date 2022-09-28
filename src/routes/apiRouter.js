@@ -1,4 +1,5 @@
 import express from 'express';
+import bcrypt from 'bcrypt';
 import {User} from '../../db/models';
 
 const apiRouter = express.Router();
@@ -15,9 +16,10 @@ apiRouter.route('/edit')
     await User.update(req.body, { where: {id: req}})
   })
 
-  apiRouter.route('/auth/registration')
+  apiRouter.route('/registration')
   .post(async (req, res) => {
     const { name, password, email } = req.body;
+    console.log(req.body)
     if (name && password && email) {
       try {
         const user = await User.create({
@@ -34,7 +36,7 @@ apiRouter.route('/edit')
     }
   });
 
-  apiRouter.route('/auth/authorization')
+  apiRouter.route('/authorization')
   .post(async (req, res) => {
     const { email, password } = req.body;
     if (email && password) {
@@ -47,6 +49,12 @@ apiRouter.route('/edit')
       return res.sendStatus(401);
     }
     return res.sendStatus(401);
+  });
+  apiRouter.route('/logout')
+  .get((req, res) => {
+    console.log(req.session);
+    req.session.destroy();
+    res.clearCookie('sid').sendStatus(200);
   });
 
 export default apiRouter;
