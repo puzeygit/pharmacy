@@ -18,4 +18,4 @@ pageRouter.get('/orger', (req, res) => {
     res.render('Layout', {})
 })
 
-export default pageRouter
+export default pageRouter;
