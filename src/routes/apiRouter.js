@@ -1,5 +1,5 @@
 import express from 'express';
-import { User } from '../db/models'
+import {User} from '../../db/models';
 
 const apiRouter = express.Router();
 
