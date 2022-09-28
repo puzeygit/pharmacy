@@ -1,19 +1,21 @@
 import express from 'express'
 
-const userRouter = express.Router();
+const pageRouter = express.Router();
 
-userRouter.get('/registration', (req, res) => {
+pageRouter.get('/registration', (req, res) => {
     res.render('Layout', {})
 })
 
-userRouter.get('/authorization', (req, res) => {
+pageRouter.get('/authorization', (req, res) => {
     res.render('Layout', {})
 })
 
-userRouter.get('/personalacc', (req, res) => {
+pageRouter.get('/personalacc', (req, res) => {
     res.render('Layout', {})
 })
 
-userRouter.get('/orger', (req, res) => {
+pageRouter.get('/orger', (req, res) => {
     res.render('Layout', {})
 })
+
+export default pageRouter;
