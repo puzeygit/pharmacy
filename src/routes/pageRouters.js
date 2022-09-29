@@ -14,7 +14,7 @@ pageRouter.get('/personalacc', (req, res) => {
     res.render('Layout', {})
 })
 
-pageRouter.get('/orger', (req, res) => {
+pageRouter.get('/order', (req, res) => {
     res.render('Layout', {})
 })
 

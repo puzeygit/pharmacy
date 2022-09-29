@@ -1,6 +1,6 @@
 import express from 'express';
 
-import {Treatment} from '../../db/models';
+import { Treatment } from '../../db/models';
 
 const router = express.Router();
 

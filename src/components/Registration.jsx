@@ -15,7 +15,7 @@ const Registration = ({setCurrUser}) => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    fetch('/api/registration', {
+    fetch('/api/new', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
