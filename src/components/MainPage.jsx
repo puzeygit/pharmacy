@@ -1,9 +1,10 @@
 import React from 'react';
+import TreatmentPage from './TreatmentPage';
 
-function MainPage() {
+function MainPage({data}) {
   return (
     <div>
-      Hello World
+      <TreatmentPage data={data}/>
     </div>
   );
 }
