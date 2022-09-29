@@ -49,4 +49,6 @@ apiRouter.route('/edit')
     return res.sendStatus(401);
   });
 
+  apiRouter.route()
+
 export default apiRouter;
