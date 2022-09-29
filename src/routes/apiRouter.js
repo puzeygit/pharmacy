@@ -1,18 +1,17 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
-import { User } from '../../db/models';
+import { User, Treatment } from '../../db/models';
 
 const apiRouter = express.Router();
 
 apiRouter.route('/edit')
   .patch(async (req, res) => {
-    await User.update(req.body, { where: {id: req}})
-  })
+    await User.update(req.body, { where: { id: req } });
+  });
 
-  apiRouter.route('/new')
+apiRouter.route('/new')
   .post(async (req, res) => {
     const { name, password, email } = req.body;
-    console.log(req.body)
     if (name && password && email) {
       try {
         const user = await User.create({
@@ -29,7 +28,7 @@ apiRouter.route('/edit')
     }
   });
 
-  apiRouter.route('/auth')
+apiRouter.route('/auth')
   .post(async (req, res) => {
     const { email, password } = req.body;
     if (email && password) {
@@ -43,11 +42,17 @@ apiRouter.route('/edit')
     }
     return res.sendStatus(401);
   });
-  apiRouter.route('/logout')
+apiRouter.route('/logout')
   .get((req, res) => {
     console.log(req.session);
     req.session.destroy();
     res.clearCookie('sid').sendStatus(200);
   });
+
+apiRouter.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const dataItem = await Treatment.findByPk(id);
+  res.json(dataItem);
+});
 
 export default apiRouter;
