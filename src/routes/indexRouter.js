@@ -27,6 +27,9 @@ router.get('/', async (req, res) => {
     counter += 1
   }
 
+
+  // const index = data[j].body.findIndexOf(el => el === 'Способ применения и дозы')
+
   let index = 0
     for (let k =0; k < data[j].body.length; k += 1) {
       if (data[j].body[k] === 'Способ применения и дозы' ) {
@@ -38,7 +41,9 @@ router.get('/', async (req, res) => {
     arr2.push(data[j].body[i])
   }
   
-    data[j].body = {[data[j].body[0]]: arr1, [data[j].body[index]]: arr2}
+
+  data[j].body = {[data[j].body[0]]: arr1, [data[j].body[index]]: arr2}
+
   }
 
   res.render('Layout', {data});
