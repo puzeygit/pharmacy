@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import Registration from './Registration';
 import Authorization from './Authorization';
 
+
 export default function App({user, data}) {
   const [currUser, setCurrUser] = useState(user || {});
   const logOutHandler = () => {
