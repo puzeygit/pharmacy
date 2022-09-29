@@ -32,8 +32,11 @@ const Navbar = ({currUser, logOutHandler}) => {
      <NavLink className="nav-link" to='/page/registration'>Регистрация</NavLink>
    </li>
    <li className="nav-item">
-   <NavLink className="nav-link" to='/page/authorization'>Авторизация</NavLink>
- </li>
+      <NavLink className="nav-link" to='/page/authorization'>Авторизация</NavLink>
+   </li>
+   <li className="nav-item">
+      <NavLink className="nav-link" to='/page/order'>Корзина</NavLink>
+   </li>
     </>}
        </ul>
        </div>
