@@ -1,22 +1,15 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
-import {User} from '../../db/models';
+import { User } from '../../db/models';
 
 const apiRouter = express.Router();
 
-// apiRouter.route('/new')
-//   .post(async (req, res) => {
-//     // const {name, email, pass} = req.body
-//     const user = await User.create({...req.body })
-//     // const user = await User.create({ name: name})
-//     res.sendStatus(200)
-  // })
 apiRouter.route('/edit')
   .patch(async (req, res) => {
     await User.update(req.body, { where: {id: req}})
   })
 
-  apiRouter.route('/registration')
+  apiRouter.route('/new')
   .post(async (req, res) => {
     const { name, password, email } = req.body;
     console.log(req.body)
@@ -36,7 +29,7 @@ apiRouter.route('/edit')
     }
   });
 
-  apiRouter.route('/authorization')
+  apiRouter.route('/auth')
   .post(async (req, res) => {
     const { email, password } = req.body;
     if (email && password) {

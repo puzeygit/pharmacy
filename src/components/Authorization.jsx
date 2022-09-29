@@ -13,7 +13,7 @@ const Authorization = ({setCurrUser}) => {
   const [err, setErr] = useState({});
   const submitHandler = (e) => {
     e.preventDefault();
-    fetch('/api/authorization', {
+    fetch('/api/auth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
