@@ -3,9 +3,12 @@ import {Link, NavLink} from 'react-router-dom';
 
 const Navbar = () => {
   return (
-  <nav className="navbar navbar-expand-lg navbar-$indigo-900 bg-light px-4">
+  <nav className="navbar navbar-expand-lg navbar-$indigo-900 bg-light px-4 navbarFs">
      <div className="container-fluid">
-      <Link className="navbar-brand" to="/"><h1 className="fs-4">Социальная аптека</h1></Link>
+      <div className='containerLogo'>
+        <img src="https://www.svgrepo.com/show/257912/pharmacy.svg" alt="logo" />
+      </div>
+      <Link className="navbar-brand" to="/"><h1 className="logoText">Социальная аптека</h1></Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
        </button>

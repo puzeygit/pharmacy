@@ -6,17 +6,17 @@ import Navbar from './Navbar';
 import Registration from './Registration';
 import Authorization from './Authorization';
 
-export default function App() {
+export default function App({data}) {
   return (
     <>
-    <Navbar/>
-    <div className="container">
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/page/registration" element={<Registration />} />
-        <Route path="/page/authorization" element={<Authorization/>}/>
-      </Routes>
-    </div>
-  </>  
+      <Navbar/>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<MainPage data={data}/>} />
+          <Route path="/page/registration" element={<Registration />} />
+          <Route path="/page/authorization" element={<Authorization/>}/>
+        </Routes>
+      </div>
+    </>  
   );
 }
