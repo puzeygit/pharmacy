@@ -6,7 +6,14 @@ const apiRouter = express.Router();
 
 apiRouter.route('/edit')
   .patch(async (req, res) => {
-    await User.update(req.body, { where: { id: req } });
+    await User.update(req.body, { where: { id: req.session.user.id } });
+    const user = await User.findOne({ where: { id: req.session.user.id } });
+    res.sendStatus(200);
+  })
+  .get(async (req, res) => {
+    const user = await User.findOne({ where: { id: req.session.user.id } });
+    console.log(user);
+    res.json(user);
   });
 
 apiRouter.route('/new')
@@ -17,7 +24,7 @@ apiRouter.route('/new')
         const user = await User.create({
           ...req.body, password: await bcrypt.hash(password, 10),
         });
-        const currUser = { id: user.id, name: user.name };
+        const currUser = { id: user.id, name: user.name, email: user.email };
         req.session.user = currUser;
         return res.json(currUser);
       } catch {
@@ -34,7 +41,7 @@ apiRouter.route('/auth')
     if (email && password) {
       const user = await User.findOne({ where: { email } });
       if (user && await bcrypt.compare(password, user.password)) {
-        const currUser = { id: user.id, name: user.name };
+        const currUser = { id: user.id, name: user.name, email: user.email };
         req.session.user = currUser;
         return res.json(currUser);
       }
