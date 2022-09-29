@@ -6,7 +6,7 @@ import indexRouter from './routes/indexRouter';
 import customRender from './utils/customRender';
 import pageRouter from './routes/pageRouters'
 import { localsMiddle } from './middlewares';
-import orderRouter from './routes/orderRouter';
+// import orderRouter from './routes/orderRouter';
 
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
@@ -37,7 +37,7 @@ app.use(localsMiddle);
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
 app.use('/page',pageRouter);
-app.use('/order', orderRouter);
+// app.use('/order', orderRouter);
 
 
 
