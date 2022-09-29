@@ -1,6 +1,10 @@
 import React from 'react';
 
 const PrevCard = ({data}) => {
+ const addHandler = () => {
+  localStorage.setItem()
+ }
+
   return (
     <div className="col px-2">
       <div className="card h-100 px-1">
@@ -11,7 +15,7 @@ const PrevCard = ({data}) => {
         </div>
         <div className="d-flex justify-content-between mb-2">
           <button type="button" className="btn $blue-100 rounded-pill">Подробнее</button>
-          <button type="button" className="btn btn-primary rounded-pill">Купить</button>
+          <button type="button" className="btn btn-primary rounded-pill" onClick={() => addHandler()}>Купить</button>
         </div>
       </div>
 

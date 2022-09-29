@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     .map((item) => item.trim())
     .filter((item) => item !== '')
   }))
-
+console.log(data);
   for (let j = 0; j < data.length; j += 1){
     const arr1 = []
     const arr2 = []
@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
 
   data[j].body = {[data[j].body[0]]: arr1, [data[j].body[index]]: arr2}
   }
-
+console.log(data);
   res.render('Layout', {data});
 });
 

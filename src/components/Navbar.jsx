@@ -24,8 +24,11 @@ const Navbar = ({currUser, logOutHandler}) => {
             <NavLink className="nav-link" onClick={logOutHandler} to='/'>Выйти</NavLink>
           </li>
            <li className="nav-item">
-           <NavLink className="nav-link disabled" tabIndex="-1" aria-disabled="true" to="/page/personalacc">Личный кабинет</NavLink>
+           <NavLink className="nav-link" tabIndex="-1" to="/page/personalacc">Личный кабинет</NavLink>
          </li>
+         <li className="nav-item">
+      <NavLink className="nav-link" to='/page/order'>Корзина</NavLink>
+   </li>
          </>)
       :  <>
       <li className="nav-item">
@@ -33,9 +36,6 @@ const Navbar = ({currUser, logOutHandler}) => {
    </li>
    <li className="nav-item">
       <NavLink className="nav-link" to='/page/authorization'>Авторизация</NavLink>
-   </li>
-   <li className="nav-item">
-      <NavLink className="nav-link" to='/page/order'>Корзина</NavLink>
    </li>
     </>}
        </ul>

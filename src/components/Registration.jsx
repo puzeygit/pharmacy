@@ -11,7 +11,7 @@ const Registration = ({setCurrUser}) => {
     password: '',
   });
   const inputHandler = (e) => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value}));
   };
   const submitHandler = (e) => {
     e.preventDefault();
