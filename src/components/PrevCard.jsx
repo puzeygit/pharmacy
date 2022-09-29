@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PrevCard = ({data}) => {
-  console.log(data)
   return (
     <div className="col px-2">
       <div className="card h-100 px-1">
@@ -15,6 +14,7 @@ const PrevCard = ({data}) => {
           <button type="button" className="btn btn-primary rounded-pill">Купить</button>
         </div>
       </div>
+
     </div>
   );
 }
