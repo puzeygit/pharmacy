@@ -1,4 +1,4 @@
-import MyCalendar from 'color-calendar';
+// import MyCalendar from 'color-calendar';
 import React from 'react';
 import TreatmentPage from './TreatmentPage';
 
