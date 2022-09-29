@@ -4,7 +4,7 @@ import path from 'path';
 import apiRouter from './routes/apiRouter';
 import indexRouter from './routes/indexRouter';
 import customRender from './utils/customRender';
-import pageRouter from './routes/pageRouters'
+import pageRouter from './routes/pageRouters';
 import { localsMiddle } from './middlewares';
 // import orderRouter from './routes/orderRouter';
 
@@ -38,8 +38,6 @@ app.use('/', indexRouter);
 app.use('/api', apiRouter);
 app.use('/page', pageRouter);
 // app.use('/order', orderRouter);
-
-
 
 app.listen(PORT, () => {
   console.log('server start on port ', PORT);

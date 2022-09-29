@@ -49,7 +49,7 @@ img.card-img-top {
   background-color: #fff;
   top: 10px;
   left: 2px;
-  border-radius: 50%;
+  border-radius: 1px;
 }
 .btn-incr{
   position: relative;
@@ -62,7 +62,7 @@ img.card-img-top {
   background-color: #fff;
   top: 10px;
   left: 2px;
-  border-radius: 50%;
+  border-radius: 1px;
 }
 .btn-incr::before{
   content: '';
@@ -72,7 +72,7 @@ img.card-img-top {
   background-color: #fff;
   top: 10px;
   left: 2px;
-  border-radius: 50%;
+  border-radius: 1px;
   transform: rotate(90deg);
 }
 
