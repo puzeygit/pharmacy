@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 
 const Registration = ({setCurrUser}) => {
   const navigate = useNavigate();
