@@ -4,6 +4,9 @@ body{
   font-family: 'Raleway', sans-serif;
   min-width: 340px;
 }
+.customButtonColor{
+  background-color: #4ecb69;
+}
 .subtitle {
   font-size: 14px;
   font-weight: 300;

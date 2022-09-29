@@ -13,7 +13,7 @@ const Order = ({data}) => {
 
   return (
     <>
-    <ul className="list-group">
+    <ul className="list-group mb-5 mt-5">
       {data?.map((value)=> <Item key={value.id} data={value}/>)}
     </ul>
     <hr className='predict' size="5"/>
