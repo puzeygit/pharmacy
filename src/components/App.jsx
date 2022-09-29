@@ -15,6 +15,15 @@ export default function App({ user, data }) {
     fetch('/api/logout')
       .then(() => setCurrUser({}));
   };
+  const getPrice = () => {
+    const data = {
+      price: 0,
+      title: '',
+      amount: 1,
+    };
+    localStorage.setItem(counter += 1, data);
+  };
+
   return (
     <>
       <Navbar currUser={currUser} logOutHandler={logOutHandler} />
