@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-function Navbar({ currUser, logOutHandler }) {
+function Navbar({
+  currUser, logOutHandler}) {
   return (
     <nav className="navbar navbar-expand-lg navbar-$indigo-900 bg-light px-4 navbarFs">
       <div className="container-fluid">
