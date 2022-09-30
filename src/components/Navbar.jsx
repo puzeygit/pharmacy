@@ -9,7 +9,7 @@ function Navbar({ currUser, logOutHandler }) {
           <img src="https://www.svgrepo.com/show/257912/pharmacy.svg" alt="logo" />
         </div>
         <Link className="navbar-brand" to="/"><h1 className="logoText">Социальная аптека</h1></Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button className="navbar-toggler customBurger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">

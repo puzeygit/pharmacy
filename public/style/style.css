@@ -100,3 +100,11 @@ body{
   height: 40px;
   border-radius: 45px;
 }
+.customCardBody{
+  padding: 0 16px;
+}
+.customBurger::before{
+  background-image: url('https://icon-library.com/images/hamburger-icon-svg/hamburger-icon-svg-13.jpg');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
