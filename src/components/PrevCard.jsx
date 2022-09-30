@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function PrevCard({ dataItem }) {
+function PrevCard({ dataItem, getPrice }) {
   return (
     <div className="col px-2">
       <div className="card h-100 px-1">
@@ -9,6 +9,7 @@ function PrevCard({ dataItem }) {
         <div className="card-body">
           <h5 className="card-title">{dataItem.title}</h5>
           <p className="subtitle">{dataItem.subtitle}</p>
+          {/* <button type="text" className="btn $blue-100 rounded-pill customButtonColor">{`${dataItem.price} Руб`}</button> */}
         </div>
         <div className="d-flex justify-content-between mb-2">
           <Link to={`/page/${dataItem.id}`}>
@@ -16,7 +17,7 @@ function PrevCard({ dataItem }) {
               Подробнее
             </button>
           </Link>
-          <button type="button" className="btn btn-primary rounded-pill">Купить</button>
+          <button type="button" className="btn btn-primary rounded-pill" onClick={() => getPrice(dataItem)}>Купить</button>
         </div>
       </div>
 

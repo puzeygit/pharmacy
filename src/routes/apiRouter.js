@@ -2,22 +2,30 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import { User, Treatment } from '../../db/models';
 
+const nodemailer = require('nodemailer');
+
 const apiRouter = express.Router();
 
 apiRouter.route('/edit')
   .patch(async (req, res) => {
     await User.update(req.body, { where: { id: req.session.user.id } });
-    const user = await User.findOne({ where: { id: req.session.user.id } });
+    // const user = await User.findOne({ where: { id: req.session.user.id } });
     res.sendStatus(200);
   })
   .get(async (req, res) => {
     const user = await User.findOne({ where: { id: req.session.user.id } });
-    console.log(user);
     res.json(user);
   });
 
 apiRouter.route('/new')
   .post(async (req, res) => {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.MAIL_EMAIL,
+        pass: process.env.MAIL_PASS,
+      },
+    });
     const { name, password, email } = req.body;
     if (name && password && email) {
       try {
@@ -25,7 +33,18 @@ apiRouter.route('/new')
           ...req.body, password: await bcrypt.hash(password, 10),
         });
         const currUser = { id: user.id, name: user.name, email: user.email };
+
+        const mailOptions = {
+          from: 'lanakhomushku@gmail.com',
+          to: req.body.email,
+          subject: 'Регистрация на сайте',
+          text: 'Поздравляем с регистрацией на сайте аптеки',
+        };
+
+        transporter.sendMail(mailOptions);
+
         req.session.user = currUser;
+
         return res.json(currUser);
       } catch {
         return res.sendStatus(500);
@@ -51,7 +70,6 @@ apiRouter.route('/auth')
   });
 apiRouter.route('/logout')
   .get((req, res) => {
-    console.log(req.session);
     req.session.destroy();
     res.clearCookie('sid').sendStatus(200);
   });
