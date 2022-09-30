@@ -40,6 +40,7 @@ function Authorization({ setCurrUser }) {
             name="email"
             className="form-control"
             id="inputEmail"
+            placeholder="Введите Ваш email"
           />
         </div>
         <div className="mb-3">
@@ -51,6 +52,7 @@ function Authorization({ setCurrUser }) {
             name="password"
             className="form-control"
             id="inputPassword"
+            placeholder="Введите Ваш пароль"
           />
         </div>
         <button type="submit" className="btn btn-primary">Авторизироваться</button>
