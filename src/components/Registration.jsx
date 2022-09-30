@@ -32,6 +32,7 @@ function Registration({ setCurrUser }) {
         <label htmlFor="inputLogin" className="form-label">Логин</label>
         <input
           name="name"
+          placeholder="Введите Ваше имя"
           value={input.name}
           onChange={inputHandler}
           type="text"
@@ -43,7 +44,7 @@ function Registration({ setCurrUser }) {
       <div className="mb-3">
         <label htmlFor="inputEmail" className="form-label">Ваша e-mail</label>
         <input
-          placeholder="Enter email"
+          placeholder="Введите Ваш e-mail"
           name="email"
           value={input.email}
           onChange={inputHandler}
@@ -61,6 +62,7 @@ function Registration({ setCurrUser }) {
           type="password"
           className="form-control"
           id="inputPassword"
+          placeholder="Введите Ваш пароль"
         />
       </div>
       <button type="submit" className="btn btn-primary">Зарегистрироваться</button>
