@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import TreatmentPage from './TreatmentPage';
 
-function MainPage({ data, searchInput }) {
+function MainPage({ data }) {
   return (
       <div>
-        <TreatmentPage data={data} searchInput={searchInput}/>
+        <TreatmentPage data={data}/>
       </div>
   );
 }
