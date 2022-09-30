@@ -20,10 +20,10 @@ apiRouter.route('/edit')
 apiRouter.route('/new')
   .post(async (req, res) => {
     const transporter = nodemailer.createTransport({
-      service: 'rambler',
+      service: 'gmail',
       auth: {
-        user: 'socialpharmacy@rambler.ru',
-        pass: 'Social123',
+        user: process.env.MAIL_EMAIL,
+        pass: process.env.MAIL_PASS,
       },
     });
     const { name, password, email } = req.body;
@@ -35,7 +35,8 @@ apiRouter.route('/new')
         const currUser = { id: user.id, name: user.name, email: user.email };
 
         const mailOptions = {
-          from: 'socialpharmacy@rambler.ru',
+          from: 'socialpharmacyelbrus@gmail.com',
+
           to: req.body.email,
           subject: 'Регистрация на сайте',
           text: 'Поздравляем с регистрацией на сайте аптеки',
@@ -74,10 +75,10 @@ apiRouter.route('/logout')
     res.clearCookie('sid').sendStatus(200);
   });
 
-apiRouter.get('/treatments', async (req, res) => {
-  const treatments = await Treatment.findAll();
-  res.json(treatments);
-});
+// apiRouter.get('/treatments', async (req, res) => {
+//   const treatments = await Treatment.findAll();
+//   res.json(treatments);
+// });
 
 apiRouter.get('/:id', async (req, response) => {
   const { id } = req.params;
@@ -87,6 +88,29 @@ apiRouter.get('/:id', async (req, response) => {
   // console.log('data', data);
   // console.log('dataItem', dataItem);
   response.json(dataItem);
+});
+
+apiRouter.post('/mail', async (req, res) => {
+  console.log(req.body);
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.MAIL_EMAIL,
+      pass: process.env.MAIL_PASS,
+    },
+  });
+
+  const mailOptions = {
+    from: 'socialpharmacyelbrus@gmail.com',
+
+    to: req.session.user.email,
+    subject: 'Ваш заказ',
+    text: req.body.resText,
+  };
+
+  transporter.sendMail(mailOptions);
+
+  res.sendStatus(200);
 });
 
 export default apiRouter;
