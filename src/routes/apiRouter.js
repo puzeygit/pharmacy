@@ -74,10 +74,14 @@ apiRouter.route('/logout')
     res.clearCookie('sid').sendStatus(200);
   });
 
-apiRouter.get('/:id', async (req, res) => {
+apiRouter.get('/:id', async (req, response) => {
   const { id } = req.params;
-  const dataItem = await Treatment.findByPk(id);
-  res.json(dataItem);
+  const rowQuery = await Treatment.findByPk(id);
+  const dataItem = JSON.parse(JSON.stringify(rowQuery));
+  // const dataItem = Object.keys(data).map((key) => ({ [key]: data[key] }));
+  // console.log('data', data);
+  // console.log('dataItem', dataItem);
+  response.json(dataItem);
 });
 
 export default apiRouter;
