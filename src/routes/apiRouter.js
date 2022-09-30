@@ -7,12 +7,11 @@ const apiRouter = express.Router();
 apiRouter.route('/edit')
   .patch(async (req, res) => {
     await User.update(req.body, { where: { id: req.session.user.id } });
-    const user = await User.findOne({ where: { id: req.session.user.id } });
+    // const user = await User.findOne({ where: { id: req.session.user.id } });
     res.sendStatus(200);
   })
   .get(async (req, res) => {
     const user = await User.findOne({ where: { id: req.session.user.id } });
-    console.log(user);
     res.json(user);
   });
 
@@ -51,7 +50,6 @@ apiRouter.route('/auth')
   });
 apiRouter.route('/logout')
   .get((req, res) => {
-    console.log(req.session);
     req.session.destroy();
     res.clearCookie('sid').sendStatus(200);
   });

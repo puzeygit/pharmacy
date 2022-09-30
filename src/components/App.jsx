@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import Heart from 'react-heart';
 import MainPage from './MainPage';
 import Navbar from './Navbar';
 import Registration from './Registration';
