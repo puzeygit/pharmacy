@@ -9,6 +9,7 @@ function PrevCard({ dataItem, getPrice }) {
         <div className="card-body">
           <h5 className="card-title">{dataItem.title}</h5>
           <p className="subtitle">{dataItem.subtitle}</p>
+          {/* <button type="text" className="btn $blue-100 rounded-pill customButtonColor">{`${dataItem.price} Руб`}</button> */}
         </div>
         <div className="d-flex justify-content-between mb-2">
           <Link to={`/page/${dataItem.id}`}>

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-function Order({ data, currUser }) {
+function Order({ currUser }) {
   const [count, setCount] = useState([]);
   const [result, setResult] = useState(0);
+
+  const orderArr = JSON.parse(localStorage.getItem('cart'));
   useEffect(() => {
     const res = orderArr.reduce((acc, el) => acc += el.price * el.amount, 0);
     setResult(res);
   });
-
-  const orderArr = JSON.parse(localStorage.getItem('cart'));
-
   const increaseHandler = (countObj) => {
     const arr = JSON.parse(localStorage.getItem('cart'));
     const obj = arr.find((el) => el.id === countObj.id);
@@ -38,7 +37,6 @@ function Order({ data, currUser }) {
     const data = JSON.parse(localStorage.getItem('cart'));
     const newData = data.reduce((acc, item, index) => acc += `${index + 1}. ${item.title} в количестве ${item.amount} шт.\n`, '');
     resText = `${text + newData}\nОбщая сумма вашего заказа ${result}`;
-    
   };
   return (
     <>
