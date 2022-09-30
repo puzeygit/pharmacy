@@ -76,6 +76,11 @@ apiRouter.route('/logout')
     res.clearCookie('sid').sendStatus(200);
   });
 
+apiRouter.get('/treatments', async (req, res) => {
+  const treatments = await Treatment.findAll();
+  res.json(treatments);
+});
+
 apiRouter.get('/:id', async (req, res) => {
   const { id } = req.params;
   const dataItem = await Treatment.findByPk(id);
