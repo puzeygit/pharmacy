@@ -5,7 +5,7 @@ function PrevCard({ dataItem }) {
   return (
     <div className="col px-2">
       <div className="card h-100 px-1">
-        <img src={`${dataItem.img}`} className="card-img-top" alt={`${dataItem.title}`} />
+        <img src={`${dataItem.img}`} className="card-img-top prevCardImg" alt={`${dataItem.title}`} />
         <div className="card-body">
           <h5 className="card-title">{dataItem.title}</h5>
           <p className="subtitle">{dataItem.subtitle}</p>
