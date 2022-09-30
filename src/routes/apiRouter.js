@@ -20,10 +20,10 @@ apiRouter.route('/edit')
 apiRouter.route('/new')
   .post(async (req, res) => {
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: 'rambler',
       auth: {
-        user: process.env.MAIL_EMAIL,
-        pass: process.env.MAIL_PASS,
+        user: 'socialpharmacy@rambler.ru',
+        pass: 'Social123',
       },
     });
     const { name, password, email } = req.body;
@@ -35,7 +35,7 @@ apiRouter.route('/new')
         const currUser = { id: user.id, name: user.name, email: user.email };
 
         const mailOptions = {
-          from: 'lanakhomushku@gmail.com',
+          from: 'socialpharmacy@rambler.ru',
           to: req.body.email,
           subject: 'Регистрация на сайте',
           text: 'Поздравляем с регистрацией на сайте аптеки',
@@ -73,6 +73,11 @@ apiRouter.route('/logout')
     req.session.destroy();
     res.clearCookie('sid').sendStatus(200);
   });
+
+apiRouter.get('/treatments', async (req, res) => {
+  const treatments = await Treatment.findAll();
+  res.json(treatments);
+});
 
 apiRouter.get('/:id', async (req, response) => {
   const { id } = req.params;

@@ -15,12 +15,17 @@ export default function App({ user, data }) {
       .then(() => setCurrUser({}));
   };
 
+  const [searchInput, setSearchInputValue] = useState('');
+  const searchHandler = (e) => {
+    setSearchInputValue(e.target.value);
+  };
+
   return (
     <>
-      <Navbar currUser={currUser} logOutHandler={logOutHandler} />
+      <Navbar currUser={currUser} logOutHandler={logOutHandler} searchHandler={searchHandler} />
       <div className="container">
         <Routes>
-          <Route path="/" element={<MainPage data={data} />} />
+          <Route path="/" element={<MainPage data={data} searchInput={searchInput}/>} />
           <Route path="/page/registration" element={<Registration setCurrUser={setCurrUser} />} />
           <Route path="/page/authorization" element={<Authorization setCurrUser={setCurrUser} />} />
           <Route path="/page/personalacc" element={<LK currUser={currUser} setCurrUser={setCurrUser} />} />
