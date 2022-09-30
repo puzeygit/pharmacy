@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Order({ currUser }) {
+  const navigate = useNavigate();
   const [count, setCount] = useState([]);
   const [result, setResult] = useState(0);
 
@@ -22,7 +23,7 @@ function Order({ currUser }) {
   const decreaseHandler = (countObj) => {
     const arr = JSON.parse(localStorage.getItem('cart'));
     const obj = arr.find((el) => el.id === countObj.id);
-    while (obj.amount > 1) { obj.amount -= 1; }
+    if (obj.amount > 1) { obj.amount -= 1; }
     const newArr = arr.map((el) => (el.id === obj.id ? { ...el, amount: obj.amount } : el));
     localStorage.setItem('cart', JSON.stringify(newArr));
     setCount(newArr);
@@ -39,13 +40,21 @@ function Order({ currUser }) {
     const data = JSON.parse(localStorage.getItem('cart'));
     const newData = data.reduce((acc, item, index) => acc += `${index + 1}. ${item.title} в количестве ${item.amount} шт.\n`, '');
     resText = `${text + newData}\nОбщая сумма вашего заказа ${result}`;
+    console.log(resText);
+    fetch('/api/mail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ resText }),
+    });
+    navigate('/');
   };
   return (
     <>
       <ul className="list-group mb-5 mt-5">
-        { <div>"У Вас нет товаров в корзине"</div> 
-        && 
-        orderArr?.map((el) => (
+        { <div>"У Вас нет товаров в корзине"</div>
+        && orderArr?.map((el) => (
           <li key={el.id} className="list-group-item d-flex justify-content-between">
             {el.title}
             <div className="button-wrapper d-flex justify-content-end">

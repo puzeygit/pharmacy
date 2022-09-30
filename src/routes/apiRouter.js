@@ -90,4 +90,27 @@ apiRouter.get('/:id', async (req, response) => {
   response.json(dataItem);
 });
 
+apiRouter.post('/mail', async (req, res) => {
+  console.log(req.body);
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.MAIL_EMAIL,
+      pass: process.env.MAIL_PASS,
+    },
+  });
+
+  const mailOptions = {
+    from: 'socialpharmacyelbrus@gmail.com',
+
+    to: req.session.user.email,
+    subject: 'Ваш заказ',
+    text: req.body.resText,
+  };
+
+  transporter.sendMail(mailOptions);
+
+  res.sendStatus(200);
+});
+
 export default apiRouter;
