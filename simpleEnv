@@ -2,11 +2,7 @@ PORT = 3000
 DB_TITLE = pharmasy
 DB_PASS = "123"
 DB_NAME = saylana
-
-//сервер почты
-socialpharmacy@rambler.ru
-//pass
-Social123
-//Ответ на контрольный вопрос
-Elbrus Bootcamp
-
+MAIL_PASS = xchqqnxuhkdrruzl
+MAIL_EMAIL = socialpharmacyelbrus@gmail.com
+MAIL_PASS = xchqqnxuhkdrruzl
+MAIL_EMAIL = socialpharmacyelbrus@gmail.com
