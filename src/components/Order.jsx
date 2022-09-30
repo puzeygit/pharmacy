@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Order({ currUser }) {
   const [count, setCount] = useState([]);
@@ -27,10 +28,11 @@ function Order({ currUser }) {
     setCount(newArr);
   };
 
+  const navigateToMain = useNavigate();
   const deleteHandler = () => {
     localStorage.clear();
+    navigateToMain('/');
   };
-
   const checkHandler = () => {
     let resText = '';
     const text = `Здравствуйте, уважемый(ая) ${currUser.name}!\nВаш заказ:\n`;
@@ -42,7 +44,7 @@ function Order({ currUser }) {
     <>
       <ul className="list-group mb-5 mt-5">
         {orderArr?.map((el) => (
-          <li className="list-group-item d-flex justify-content-between">
+          <li key={el.id} className="list-group-item d-flex justify-content-between">
             {el.title}
             <div className="button-wrapper d-flex justify-content-end">
               <button type="button" className="btn btn-primary btn-decr" onClick={() => decreaseHandler(el)} />
