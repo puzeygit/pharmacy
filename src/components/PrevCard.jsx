@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function PrevCard({ dataItem }) {
+function PrevCard({ dataItem, getPrice }) {
   return (
     <div className="col px-2">
       <div className="card h-100 px-1">
@@ -17,7 +17,7 @@ function PrevCard({ dataItem }) {
               Подробнее
             </button>
           </Link>
-          <button type="button" className="btn btn-primary rounded-pill">Купить</button>
+          <button type="button" className="btn btn-primary rounded-pill" onClick={() => getPrice(dataItem)}>Купить</button>
         </div>
       </div>
 

@@ -4,9 +4,9 @@ import TreatmentPage from './TreatmentPage';
 
 function MainPage({ data }) {
   return (
-    <div>
-      <TreatmentPage data={data} />
-    </div>
+      <div>
+        <TreatmentPage data={data} />
+      </div>
   );
 }
 

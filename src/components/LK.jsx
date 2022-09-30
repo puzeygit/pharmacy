@@ -42,7 +42,6 @@ export default function LK({ currUser, setCurrUser }) {
           type="text"
           className="form-control"
           id="inputLogin"
-          description="введите имя"
         />
       </div>
       <div className="mb-3">

@@ -14,6 +14,7 @@ export default function App({ user, data }) {
     fetch('/api/logout')
       .then(() => setCurrUser({}));
   };
+
   return (
     <>
       <Navbar currUser={currUser} logOutHandler={logOutHandler} />
@@ -23,7 +24,7 @@ export default function App({ user, data }) {
           <Route path="/page/registration" element={<Registration setCurrUser={setCurrUser} />} />
           <Route path="/page/authorization" element={<Authorization setCurrUser={setCurrUser} />} />
           <Route path="/page/personalacc" element={<LK currUser={currUser} setCurrUser={setCurrUser} />} />
-          <Route path="/page/order" element={<Order data={data} />} />
+          <Route path="/page/order" element={<Order currUser={currUser} data={data} />} />
           <Route path="/page/:id" element={<ProductPage />} />
         </Routes>
       </div>
