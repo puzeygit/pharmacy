@@ -29,7 +29,7 @@ body{
 .containerLogo img{
   height: 100%;
 }
-img.card-img-top {
+.prevCardImg{
   width: 100%;
   height: 100%;
   max-width: 230px;
@@ -75,6 +75,12 @@ img.card-img-top {
   border-radius: 1px;
   transform: rotate(90deg);
 }
+.productPageImg{
+  height: 100%;
+  width: 100%;
+  max-width: 400px;
+  object-fit: contain;
+}
 
 .btn-incr,
 .btn-decr{
@@ -88,4 +94,9 @@ img.card-img-top {
 }
 .predict{
   border-radius: 5px;
+}
+.backButton{
+  width: 100px;
+  height: 40px;
+  border-radius: 45px;
 }

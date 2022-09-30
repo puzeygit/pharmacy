@@ -9,12 +9,11 @@ const apiRouter = express.Router();
 apiRouter.route('/edit')
   .patch(async (req, res) => {
     await User.update(req.body, { where: { id: req.session.user.id } });
-    const user = await User.findOne({ where: { id: req.session.user.id } });
+    // const user = await User.findOne({ where: { id: req.session.user.id } });
     res.sendStatus(200);
   })
   .get(async (req, res) => {
     const user = await User.findOne({ where: { id: req.session.user.id } });
-    console.log(user);
     res.json(user);
   });
 
@@ -71,7 +70,6 @@ apiRouter.route('/auth')
   });
 apiRouter.route('/logout')
   .get((req, res) => {
-    console.log(req.session);
     req.session.destroy();
     res.clearCookie('sid').sendStatus(200);
   });
@@ -81,10 +79,14 @@ apiRouter.get('/treatments', async (req, res) => {
   res.json(treatments);
 });
 
-apiRouter.get('/:id', async (req, res) => {
+apiRouter.get('/:id', async (req, response) => {
   const { id } = req.params;
-  const dataItem = await Treatment.findByPk(id);
-  res.json(dataItem);
+  const rowQuery = await Treatment.findByPk(id);
+  const dataItem = JSON.parse(JSON.stringify(rowQuery));
+  // const dataItem = Object.keys(data).map((key) => ({ [key]: data[key] }));
+  // console.log('data', data);
+  // console.log('dataItem', dataItem);
+  response.json(dataItem);
 });
 
 export default apiRouter;

@@ -37,7 +37,6 @@ function Order({ currUser }) {
     const data = JSON.parse(localStorage.getItem('cart'));
     const newData = data.reduce((acc, item, index) => acc += `${index + 1}. ${item.title} в количестве ${item.amount} шт.\n`, '');
     resText = `${text + newData}\nОбщая сумма вашего заказа ${result}`;
-    
   };
   return (
     <>

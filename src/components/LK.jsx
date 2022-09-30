@@ -23,7 +23,6 @@ export default function LK({ currUser, setCurrUser }) {
       .then((res) => res.json())
       .then((data) => {
         setCurrUser(data);
-        // navigate('/')})
       });
   };
 
