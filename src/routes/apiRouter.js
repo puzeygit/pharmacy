@@ -20,10 +20,10 @@ apiRouter.route('/edit')
 apiRouter.route('/new')
   .post(async (req, res) => {
     const transporter = nodemailer.createTransport({
-      service: 'rambler',
+      service: 'gmail',
       auth: {
-        user: 'socialpharmacy@rambler.ru',
-        pass: 'Social123',
+        user: process.env.MAIL_EMAIL,
+        pass: process.env.MAIL_PASS,
       },
     });
     const { name, password, email } = req.body;
