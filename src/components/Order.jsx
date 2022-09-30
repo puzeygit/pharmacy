@@ -43,7 +43,9 @@ function Order({ currUser }) {
   return (
     <>
       <ul className="list-group mb-5 mt-5">
-        {orderArr?.map((el) => (
+        { <div>"У Вас нет товаров в корзине"</div> 
+        && 
+        orderArr?.map((el) => (
           <li key={el.id} className="list-group-item d-flex justify-content-between">
             {el.title}
             <div className="button-wrapper d-flex justify-content-end">
