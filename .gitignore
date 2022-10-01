@@ -6,7 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
-js/
+app.js
+vandor.js
 sessions/
 
 # Diagnostic reports (https://nodejs.org/api/report.html)

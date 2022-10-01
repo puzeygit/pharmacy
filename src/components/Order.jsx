@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import LiOrderItem from './LiOrderItem';
+import OrderResult from './OrderResult';
 
 function Order({ currUser }) {
   const navigate = useNavigate();
   const [count, setCount] = useState([]);
   const [result, setResult] = useState(0);
+  const [bucket, setBucket] = useState([]);
+
+  useEffect(() => {
+    const myStorage = JSON.parse(localStorage.getItem('cart')).flat();
+    setBucket(myStorage);
+  }, []);
 
   const orderArr = JSON.parse(localStorage.getItem('cart'));
   useEffect(() => {
@@ -65,31 +73,15 @@ function Order({ currUser }) {
           </li>
         ),
 
-        // <Item key={value.id} data={value} />
-        )}
-      </ul>
-      <hr className="predict" size="5" />
-      <div className="row d-flex justify-content-between">
-        <div className="col fs-3">
-          Сумма Вашего заказа:
-        </div>
-        <div className="col text-end pb-4">
-          <div className="fs-2">
-            {result}
-            {' '}
-            рублей
-          </div>
-        </div>
+  return (
+    <div>
+      <div>
+        <ul className="list-group mb-5 mt-5">
+          {orderArr?.map((el) => (<LiOrderItem key={el.id} el={el} decreaseHandler={decreaseHandler} increaseHandler={increaseHandler} />))}
+        </ul>
+        <OrderResult result={result} checkHandler={checkHandler} deleteHandler={deleteHandler} />
       </div>
-      <div className="d-flex justify-content-between mb-2">
-        <button type="button" className="btn $blue-100 rounded-pill customButtonColor" onClick={checkHandler}>
-          Оформить заказ
-        </button>
-        <button type="button" className="btn btn-primary rounded-pill" onClick={deleteHandler}>
-          Очистить корзину
-        </button>
-      </div>
-    </>
+    </div>
   );
 }
 
